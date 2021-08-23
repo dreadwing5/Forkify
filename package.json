@@ -20,8 +20,9 @@
     "@babel/preset-env": "^7.15.0",
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-rc.0",
-    "core-js": "^3.16.2",
-    "parcel": "^2.0.0-rc.0",
-    "regenerator-runtime": "^0.13.9"
+    "parcel": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "fraction.js": "^4.1.1"
   }
 }
