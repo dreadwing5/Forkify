@@ -1,3 +1,14 @@
+import {
+  getRecipeHtml,
+  getSpinnerHtml,
+  renderRecipe,
+  renderSpinner,
+} from "./template";
+
+//Polyfill
+/* import "core-js/stable";
+import "regenerator-runtime/runtime"; */
+
 const recipeContainer = document.querySelector(".recipe");
 
 const timeout = function (s) {
@@ -8,14 +19,14 @@ const timeout = function (s) {
   });
 };
 
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
-
 const showRecipe = async function () {
   try {
+    //1). Loading Recipe
+    const spinnerHtml = getSpinnerHtml();
+    recipeContainer.insertAdjacentHTML("afterbegin", spinnerHtml);
+
     const res = await fetch(
-      "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
+      "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc7e"
     );
     const data = await res.json();
 
@@ -30,9 +41,16 @@ const showRecipe = async function () {
       sourceUrl: recipe.source_url,
       image: recipe.image_url,
       servings: recipe.servings,
-      cookingTIme: recipe.cooking_time,
+      cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
+
+    //2).Rendering Recipe
+    recipeContainer.innerHTML = "";
+    const recipeHtml = getRecipeHtml(recipe);
+
+    recipeContainer.insertAdjacentHTML("afterbegin", recipeHtml);
+
     console.log(recipe);
   } catch (err) {
     alert(err);
