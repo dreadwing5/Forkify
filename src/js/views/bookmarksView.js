@@ -1,7 +1,6 @@
 import View from "./View.js";
 import previewView from "./previewView.js";
 import icons from "url:../../img/icons.svg";
-import { result } from "lodash";
 
 class BookmarksView extends View {
   _parentElement = document.querySelector(".bookmarks__list");
