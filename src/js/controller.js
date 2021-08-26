@@ -41,13 +41,14 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     //Render search results
-    resultsView.render(model.state.search.result);
+    // resultsView.render(model.state.search.result);
+    resultsView.render(model.getSearchResultsPage());
   } catch (err) {
     console.log(err);
   }
 };
 
-controlSearchResults();
+// controlSearchResults();
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipe); //publisher - subscriber pattern
